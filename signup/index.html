@@ -34,7 +34,7 @@
             <label for="profileImg">
                 <img src="https://mandarin.api.weniv.co.kr/Ellipse.png" alt="" srcset="" id="imagePre">
             </label>
-            <input type="file" id="profileImg" name="profile-img" accept="image/*" class="ir" />
+            <input type="file" id="profileImg" name="image" accept="image/*" class="ir" />
             <div class="input-container">
                 <label for="userNameInput">사용자 이름</label>
                 <input type="text" id="userNameInput" name="username" data-state="0" placeholder="2~10자 이내여야 합니다.">
@@ -74,6 +74,7 @@ const onClick = async () => {
     });
 
     const json = await res.json()
+    console.log(json)
 }
 
 
@@ -82,10 +83,25 @@ const onClick = async () => {
 // 1. file이 change 되었을때 바뀐 파일을 업로드하고 반환된 주소를 이용하자.
 // 2. 회원가입 요청시 file을업로드하자! 그리고 반환받은 주소를 이용하자.
 // 1번이 더 쉽다는데? 1번으로 ㄱ
-const fileOnChange = (e) =>{
+const fileOnChange = async (e) =>{
     // 파일 하나 꺼내오기
-    const imageFile = e.target.files[0]
+    const imageFile = e.target.files[0];
+    // 폼데이터 만들기
+    const formData = new FormData();
+    // 폼데이터에 내 데이터 추가하기
+    // 폼데이터.append("키","값")
+    formData.append("image",imageFile);
+    const res = await fetch("http://146.56.183.55:5050/image/uploadfile",{
+        method:"POST",
+        body:formData
+    });
+
+    const json = await res.json()
+    console.log(json)
+
+
     
+
 }
 const imgInput = document.querySelector("#profileImg");
 imgInput.addEventListener("change",fileOnChange);
