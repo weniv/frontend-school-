@@ -53,7 +53,7 @@
 </body>
 <script>
 const submitBtn = document.querySelector(".submit-btn");
-const onClick = () => {
+const onClick = async () => {
     const inputs = document.querySelectorAll("#root input");
     // 데이터 만들기
     const data = [...inputs].reduce((data,inputEl)=>{
@@ -65,25 +65,18 @@ const onClick = () => {
     },{})
     // 회원가입 요청 api 명세맞춰서 데이터 가공하기!
     const userData = {user:data}
-
-    //여기부터
-    // 드디어 요청하기
-    fetch("http://146.56.183.55:5050/user",{
-        method:"POST",// post, get, delete 등 적기
+    const res = await fetch("http://146.56.183.55:5050/user",{
+        method:"POST",
         headers:{
-            "Content-type" : "application/json"// header채우기
+            "Content-type" : "application/json"
         },
-        body:JSON.stringify(userData)//body data 문자열형태로 넣기
-    })//기다려야됨... 비동기임... 기다려..
-    .then((res)=>{// 다 기다리고 할일
-        return res.json()// 이녀석도 비동기임... 기다려야됨..
-    })// 여기서 또 기다려야되네
-    .then((json)=>{// 다 기다리고 할 일....
-        console.log(json)
-    })
-    //여기까지 비동기로 움직이는중
-    console.log("안녕하세요, 저는 제 할일 하겠습니다 ^^")
+        body:JSON.stringify(userData)
+    });
+
+    const json = await res.json()
 }
+
+
 
 
 // 이벤트 등록하기
