@@ -95,12 +95,10 @@ const fileOnChange = async (e) =>{
         method:"POST",
         body:formData
     });
-
-    const json = await res.json()
-    console.log(json)
-
-
     
+    const json = await res.json()
+    const imagePre = document.querySelector("#imagePre");
+    imagePre.src = "http://146.56.183.55:5050/"+json.filename;
 
 }
 const imgInput = document.querySelector("#profileImg");
