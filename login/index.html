@@ -54,9 +54,11 @@
             },
             body:JSON.stringify(loginData)
         });
-        
+
         const json = await res.json()
         console.log(json,"제이손입니다")
+        const token = json.user["token"]
+        localStorage.setItem("token",token);
     }
     const loginButton = document.querySelector("#login-btn");
     loginButton.addEventListener("click", login)
