@@ -3,13 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>회원가입</title>
 </head>
@@ -51,4 +44,22 @@
         </section>
     </div>
 </body>
+<script>
+// 1번째로 해야하는것..?
+// 데이터를 모아야해요 -> input에 있는것!
+// 1번째로 해야하는것 : submit을 하기위해 필요한 데이터 읽고/만들기
+// 1-1 submit버튼을 클릭했을때 잘 클릭이 되는지 확인!
+// 1-1-1 버튼선택하기.
+const submitBtn = document.querySelector(".submit-btn")
+// 1-1-2 버튼 선택 잘됐는지 확인하기.
+// 클릭했을때 체크해주는 기능 만들기
+// 1-2 버튼을 클릭했을때 데이터를 받아오도록 하고싶어!
+const onClick = () => {
+    console.log("클릭 됨")
+}
+
+// 이벤트 등록하기
+submitBtn.addEventListener("click",onClick);
+
+</script>
 </html>
