@@ -48,7 +48,7 @@
 const submitBtn = document.querySelector(".submit-btn");
 const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
-const userNamedInput = document.querySelector("#userNameInput");
+const userNameInput = document.querySelector("#userNameInput");
 const userIdInput = document.querySelector("#userIdInput");
 const userIntroInput = document.querySelector("#userIntroInput");
 
@@ -56,6 +56,23 @@ const userIntroInput = document.querySelector("#userIntroInput");
 // 1-2 버튼을 클릭했을때 데이터를 받아오도록 하고싶어!
 const onClick = () => {
     console.log("클릭 됨");
+    //각 인풋창의 값을 받아오기.
+    console.log(emailInput.value)
+    const email = emailInput.value;
+    const username = userNameInput.value;
+    const password = passwordInput.value;
+    const accountname = userIdInput.value;
+    const intro = userIntroInput.value;
+    const data = {
+		"user": {
+				"username": username,
+				"email": email,
+				"password": password,
+				"accountname": accountname,
+				"intro": intro,
+		}
+    }
+    console.log(data)
 }
 
 // 이벤트 등록하기
