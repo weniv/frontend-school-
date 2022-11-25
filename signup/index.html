@@ -45,17 +45,17 @@
     </div>
 </body>
 <script>
-// 1번째로 해야하는것..?
-// 데이터를 모아야해요 -> input에 있는것!
-// 1번째로 해야하는것 : submit을 하기위해 필요한 데이터 읽고/만들기
-// 1-1 submit버튼을 클릭했을때 잘 클릭이 되는지 확인!
-// 1-1-1 버튼선택하기.
-const submitBtn = document.querySelector(".submit-btn")
-// 1-1-2 버튼 선택 잘됐는지 확인하기.
-// 클릭했을때 체크해주는 기능 만들기
+const submitBtn = document.querySelector(".submit-btn");
+const emailInput = document.querySelector("#emailInput");
+const passwordInput = document.querySelector("#passwordInput");
+const userNamedInput = document.querySelector("#userNameInput");
+const userIdInput = document.querySelector("#userIdInput");
+const userIntroInput = document.querySelector("#userIntroInput");
+
+
 // 1-2 버튼을 클릭했을때 데이터를 받아오도록 하고싶어!
 const onClick = () => {
-    console.log("클릭 됨")
+    console.log("클릭 됨");
 }
 
 // 이벤트 등록하기
