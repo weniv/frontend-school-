@@ -77,6 +77,24 @@ const onClick = async () => {
 }
 
 
+//이미지 업로드 함수 만들기
+// 아직 회원가입할때 이미지를 만들수가 없어요 ㅠㅠ
+// 1. file이 change 되었을때 바뀐 파일을 업로드하고 반환된 주소를 이용하자.
+// 2. 회원가입 요청시 file을업로드하자! 그리고 반환받은 주소를 이용하자.
+// 1번이 더 쉽다는데? 1번으로 ㄱ
+const fileOnChange = (e) =>{
+    // 파일 하나 꺼내오기
+    const imageFile = e.target.files[0]
+    
+}
+const imgInput = document.querySelector("#profileImg");
+imgInput.addEventListener("change",fileOnChange);
+
+const imageUpload = ()=>{
+
+}
+
+
 
 
 // 이벤트 등록하기
