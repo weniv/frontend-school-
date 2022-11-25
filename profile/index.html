@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="getProfile">프로필받기</button>
+    <div>프로필 정보가 들어올 공간
+        <div id="profile"></div>
+    </div>
+</body>
+<script>
+    const getProfile = async ()=>{
+        const res = await fetch("http://146.56.183.55:5050/profile/wbtest10/following",{
+            method:"GET",
+            headers:{
+                "Authorization" : ``,
+                "Content-type" : "application/json"
+            }
+        });
+        const json = await res.json();
+
+    }
+</script>
+</html>
