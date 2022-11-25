@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>회원가입</title>
 </head>
 <body>
@@ -11,11 +19,11 @@
             <h2 class="main-title">이메일로 회원가입</h2>
             <div class="input-container">
                 <label for="emailInput">이메일</label>
-                <input type="email" id="emailInput" data-state="0" placeholder="이메일 주소를 알려주세요.">
+                <input type="email" id="emailInput" name="email" data-state="0" placeholder="이메일 주소를 알려주세요.">
             </div>
             <div class="input-container input-container-pw">
                 <label for="passwordInput">비밀번호</label>
-                <input type="password" id="passwordInput" data-state="0" placeholder="비밀번호를 설정해 주세요.">
+                <input type="password" name="password" id="passwordInput" data-state="0" placeholder="비밀번호를 설정해 주세요.">
             </div>
             <button type="button" class="next-btn">다음</button>
         </section>
@@ -24,20 +32,20 @@
             <h2 class="main-title join-profile-title">프로필 설정</h2>
             <p class="profile-info-txt">나중에 언제든지 변경할 수 있습니다.</p>
             <label for="profileImg">
-                <img src="http://146.56.183.55:5050/Ellipse.png" alt="" srcset="" id="imagePre">
+                <img src="https://mandarin.api.weniv.co.kr/Ellipse.png" alt="" srcset="" id="imagePre">
             </label>
             <input type="file" id="profileImg" name="profile-img" accept="image/*" class="ir" />
             <div class="input-container">
                 <label for="userNameInput">사용자 이름</label>
-                <input type="text" id="userNameInput" data-state="0" placeholder="2~10자 이내여야 합니다.">
+                <input type="text" id="userNameInput" name="username" data-state="0" placeholder="2~10자 이내여야 합니다.">
             </div>
             <div class="input-container">
                 <label for="userIdInput">계정 ID</label>
-                <input type="text" id="userIdInput" data-state="0" placeholder="영문, 숫자, 특수문자(,), (_)만 사용 가능합니다.">
+                <input type="text" id="userIdInput" name="accountname" data-state="0" placeholder="영문, 숫자, 특수문자(,), (_)만 사용 가능합니다.">
             </div>
             <div class="input-container input-container-intro">
                 <label for="userIntroInput">소개</label>
-                <input type="text" id="userIntroInput" data-state="1" placeholder="자신과 판매할 상품에 대해 소개해 주세요.">
+                <input type="text" id="userIntroInput" name="intro" data-state="1" placeholder="자신과 판매할 상품에 대해 소개해 주세요.">
             </div>
             <button type="button" class="submit-btn">감귤마켓 시작하기</button>
         </section>
@@ -45,33 +53,38 @@
 </body>
 <script>
 const submitBtn = document.querySelector(".submit-btn");
-const emailInput = document.querySelector("#emailInput");
-const passwordInput = document.querySelector("#passwordInput");
-const userNameInput = document.querySelector("#userNameInput");
-const userIdInput = document.querySelector("#userIdInput");
-const userIntroInput = document.querySelector("#userIntroInput");
+// const emailInput = document.querySelector("#emailInput");
+// const passwordInput = document.querySelector("#passwordInput");
+// const userNameInput = document.querySelector("#userNameInput");
+// const userIdInput = document.querySelector("#userIdInput");
+// const userIntroInput = document.querySelector("#userIntroInput");
 
 
 // 1-2 버튼을 클릭했을때 데이터를 받아오도록 하고싶어!
 const onClick = () => {
     console.log("클릭 됨");
+    const inputs = document.querySelectorAll("#root input");
+    console.log(inputs)
+    const data = {}
+    inputs.forEach((input)=>{
+        data["뭔가이름..."] = input.value
+    })
     //각 인풋창의 값을 받아오기.
-    console.log(emailInput.value)
-    const email = emailInput.value;
-    const username = userNameInput.value;
-    const password = passwordInput.value;
-    const accountname = userIdInput.value;
-    const intro = userIntroInput.value;
-    const data = {
-		"user": {
-				"username": username,
-				"email": email,
-				"password": password,
-				"accountname": accountname,
-				"intro": intro,
-		}
-    }
-    console.log(data)
+    // const email = emailInput.value;
+    // const username = userNameInput.value;
+    // const password = passwordInput.value;
+    // const accountname = userIdInput.value;
+    // const intro = userIntroInput.value;
+    // const data = {
+	// 	"user": {
+	// 			"username": username,
+	// 			"email": email,
+	// 			"password": password,
+	// 			"accountname": accountname,
+	// 			"intro": intro,
+	// 	}
+    // }
+    // console.log(data)
 }
 
 // 이벤트 등록하기
