@@ -65,15 +65,22 @@ const onClick = () => {
     console.log("클릭 됨");
     const inputs = document.querySelectorAll("#root input");
     console.log(inputs)
-    const data = {}
-    inputs.forEach((inputEl)=>{
-        console.log("인풋 네임",inputEl.name);
-        console.log("input value",inputEl.value);
+    // const data = {}
+    // inputs.forEach((inputEl)=>{
+    //     console.log("인풋 네임",inputEl.name);
+    //     console.log("input value",inputEl.value);
+    //     if(inputEl.name == "profile-img"){
+    //         return;
+    //     }
+    //     data[inputEl.name] = inputEl.value
+    // })
+    const data = [...inputs].reduce((data,inputEl)=>{
         if(inputEl.name == "profile-img"){
-            return;
+            return data;
         }
-        data[inputEl.name] = inputEl.value
-    })
+        data[inputEl.name] = inputEl.value;
+        return data
+    },{})
     console.log(data)
 }
 
