@@ -65,15 +65,20 @@ const onClick = () => {
     },{})
     // 회원가입 요청 api 명세맞춰서 데이터 가공하기!
     const userData = {user:data}
-    
+
     // 드디어 요청하기
-    fetch("https://mandarin.api.weniv.co.kr/user",{
-        method:"POST",
-        headers:{
-            "Content-type" : "application/json"
-        },
-        body:JSON.stringify(userData)
-    }).then((res)=>res.json()).then((json)=>console.log(json))
+    const 요청명세생성기 = (배송형태,요청사항,주문정보) =>{
+        const 뭔가데이터오브젝트 = {
+            method:배송형태,// post, get, delete 등 적기
+            headers:요청사항,
+            body:JSON.stringify(주문정보)//body data 문자열형태로 넣기
+        }
+        return 뭔가데이터오브젝트
+    }
+    const 가게 = "http://146.56.183.55:5050/user"
+    const 요청명세 = 요청명세생성기("POST",{"Content-type" : "application/json"},userData)
+
+    fetch(가게,요청명세).then((res)=>res.json()).then((json)=>console.log(json))
 }
 
 
