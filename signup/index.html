@@ -63,6 +63,10 @@ const onClick = async () => {
         data[inputEl.name] = inputEl.value;
         return data
     },{})
+    // 데이터에 이미지 추가하기
+    const imagePre = document.querySelector("#imagePre");
+    data["image"] = imagePre.src;
+    
     // 회원가입 요청 api 명세맞춰서 데이터 가공하기!
     const userData = {user:data}
     const res = await fetch("http://146.56.183.55:5050/user",{
@@ -91,13 +95,16 @@ const fileOnChange = async (e) =>{
     // 폼데이터에 내 데이터 추가하기
     // 폼데이터.append("키","값")
     formData.append("image",imageFile);
+    // 요청하기
     const res = await fetch("http://146.56.183.55:5050/image/uploadfile",{
         method:"POST",
         body:formData
     });
-    
+    // json꺼내기
     const json = await res.json()
+    // 이미지 미리보기 요소선택
     const imagePre = document.querySelector("#imagePre");
+    // 이미지 미리보기 요소에 src변경
     imagePre.src = "http://146.56.183.55:5050/"+json.filename;
 
 }
