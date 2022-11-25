@@ -69,23 +69,11 @@ const onClick = () => {
     inputs.forEach((inputEl)=>{
         console.log("인풋 네임",inputEl.name);
         console.log("input value",inputEl.value);
+        if(inputEl.name == "profile-img"){
+            return;
+        }
         data[inputEl.name] = inputEl.value
     })
-    //각 인풋창의 값을 받아오기.
-    // const email = emailInput.value;
-    // const username = userNameInput.value;
-    // const password = passwordInput.value;
-    // const accountname = userIdInput.value;
-    // const intro = userIntroInput.value;
-    // const data = {
-	// 	"user": {
-	// 			"username": username,
-	// 			"email": email,
-	// 			"password": password,
-	// 			"accountname": accountname,
-	// 			"intro": intro,
-	// 	}
-    // }
     console.log(data)
 }
 
