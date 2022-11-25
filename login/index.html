@@ -58,6 +58,7 @@
         const json = await res.json()
         console.log(json,"제이손입니다")
         const token = json.user["token"]
+        //로컬스토리지 key:"token"에 token값 저장 
         localStorage.setItem("token",token);
     }
     const loginButton = document.querySelector("#login-btn");

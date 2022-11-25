@@ -7,22 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="getProfile">프로필받기</button>
-    <div>프로필 정보가 들어올 공간
-        <div id="profile"></div>
+    <button type="button" id="getFollowList">팔로우받기</button>
+    <div>팔로워 정보가 들어올 공간
+        <div id="followList"></div>
     </div>
 </body>
 <script>
-    const getProfile = async ()=>{
+    const getFollowList = async ()=>{
+        const token = localStorage.getItem("token");
+        console.log(token)
         const res = await fetch("http://146.56.183.55:5050/profile/wbtest10/following",{
             method:"GET",
             headers:{
-                "Authorization" : ``,
+                "Authorization" : `Bearer ${token}`,
                 "Content-type" : "application/json"
             }
         });
         const json = await res.json();
-
+        console.log(json);
+        renderFollowList(json)
     }
+    const renderFollowList = (followList)=>{
+        document.querySelector("#followList").innerHTML = JSON.stringify(followList)
+    }
+    const getFollowListButton = document.querySelector("#getFollowList");
+    getFollowListButton.addEventListener("click",getFollowList);
 </script>
 </html>
