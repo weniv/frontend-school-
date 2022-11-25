@@ -53,27 +53,8 @@
 </body>
 <script>
 const submitBtn = document.querySelector(".submit-btn");
-// const emailInput = document.querySelector("#emailInput");
-// const passwordInput = document.querySelector("#passwordInput");
-// const userNameInput = document.querySelector("#userNameInput");
-// const userIdInput = document.querySelector("#userIdInput");
-// const userIntroInput = document.querySelector("#userIntroInput");
-
-
-// 1-2 버튼을 클릭했을때 데이터를 받아오도록 하고싶어!
 const onClick = () => {
-    console.log("클릭 됨");
     const inputs = document.querySelectorAll("#root input");
-    console.log(inputs)
-    // const data = {}
-    // inputs.forEach((inputEl)=>{
-    //     console.log("인풋 네임",inputEl.name);
-    //     console.log("input value",inputEl.value);
-    //     if(inputEl.name == "profile-img"){
-    //         return;
-    //     }
-    //     data[inputEl.name] = inputEl.value
-    // })
     const data = [...inputs].reduce((data,inputEl)=>{
         if(inputEl.name == "profile-img"){
             return data;
@@ -81,8 +62,16 @@ const onClick = () => {
         data[inputEl.name] = inputEl.value;
         return data
     },{})
-    console.log(data)
+    const userData = {user:data}
+    fetch("https://mandarin.api.weniv.co.kr/user",{
+        method:"POST",
+        headers:{
+            "Content-type" : "application/json"
+        },
+        body:JSON.stringify(userData)
+    }).then((res)=>res.json()).then((json)=>console.log(json))
 }
+
 
 // 이벤트 등록하기
 submitBtn.addEventListener("click",onClick);
