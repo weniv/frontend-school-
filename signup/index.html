@@ -55,6 +55,7 @@
 const submitBtn = document.querySelector(".submit-btn");
 const onClick = () => {
     const inputs = document.querySelectorAll("#root input");
+    // 데이터 만들기
     const data = [...inputs].reduce((data,inputEl)=>{
         if(inputEl.name == "profile-img"){
             return data;
@@ -62,7 +63,10 @@ const onClick = () => {
         data[inputEl.name] = inputEl.value;
         return data
     },{})
+    // 회원가입 요청 api 명세맞춰서 데이터 가공하기!
     const userData = {user:data}
+    
+    // 드디어 요청하기
     fetch("https://mandarin.api.weniv.co.kr/user",{
         method:"POST",
         headers:{
