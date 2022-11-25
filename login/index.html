@@ -23,7 +23,7 @@
                     <input type="password" id="pw">
                 </div>
                 <button id="login-btn" class="init-button l-button disabled-button login-btn" type="button">로그인</button>
-                <button class="join-email-btn" type="button">이메일로 회원가입</a>
+                <button class="join-email-btn" type="button">이메일로 회원가입</button>
             </form>
         </section>
     </main>
@@ -33,21 +33,28 @@
         const email = document.querySelector("#email").value
         const password = document.querySelector("#pw").value
 
-        const url = "https://mandarin.api.weniv.co.kr";
+        const url = "http://146.56.183.55:5050";
         const reqPath ="/user/login";
+        //비밀번호 6개이상인지 체크하기
+        if(password.length<6) {
+            alert("비밀번호 6개 이상어야함")
+            return ;
+        }
         const loginData = {
 		"user":{
 				"email": email,
 				"password": password
-		}
-}
-        const res = await fetch(url+reqPath,{
+		    }
+        }
+        const reqUrl = url+reqPath
+        const res = await fetch(reqUrl,{
             method:"POST",
             headers:{
                 "Content-type" : "application/json"
             },
             body:JSON.stringify(loginData)
-        })
+        });
+        
         const json = await res.json()
         console.log(json,"제이손입니다")
     }
