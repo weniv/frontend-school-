@@ -50,5 +50,28 @@
             <button type="button" class="submit-btn">감귤마켓 시작하기</button>
         </section>
     </div>
+    <script>
+        // 1. 버튼을 클릭했을때 뭐가 일어나야함
+        // 1.1 버튼을 찾자.
+        const btnSubmit = document.querySelector(".submit-btn");
+        btnSubmit.addEventListener("click",()=>{
+            // 2.2 인풋요소에서 입력된 값들을 가져왔습니다~!
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            const userName = userNameInput.value;
+            const userId = userIdInput.value;
+            const intro = introIput.value
+            console.log("클릭이 되었다.");
+            console.log(email,password,userName,userId)
+        })
+        // 저 회원가입을 하기 위해서는 입력창에 있는 값들을 가져와야함.
+        // 2. 버튼을 클릭했을때 인풋에 있는 데이터를 받아와야함..ㅋ
+        // 2.1 인풋 요소를 선택을해야하죠
+        const emailInput = document.querySelector("#emailInput");
+        const passwordInput = document.querySelector("#passwordInput");
+        const userNameInput = document.querySelector("#userNameInput");
+        const userIdInput = document.querySelector("#userIdInput");
+        const introIput = document.querySelector("#userIntroInput");
+    </script>
 </body>
 </html>
