@@ -52,12 +52,13 @@
     </div>
     <script>
         const btnSubmit = document.querySelector(".submit-btn");
-        btnSubmit.addEventListener("click",()=>{
+        const handleBtnSubmit = ()=>{
             const email = emailInput.value;
             const password = passwordInput.value;
             const userName = userNameInput.value;
             const userId = userIdInput.value;
             const intro = introInput.value;
+            const imageUrl = document.querySelector("#imagePre").src
             
             const data = {
                             "user": {
@@ -66,7 +67,7 @@
                                 "password": password,
                                 "accountname": userId,
                                 "intro": intro,
-                                "image": ""
+                                "image": imageUrl
                             }
                         }
             
@@ -77,12 +78,33 @@
                 },
                 body:JSON.stringify(data)
             }).then((res)=>res.json()).then((json)=>console.log(json));
-        })
+        }
+        btnSubmit.addEventListener("click",handleBtnSubmit)
         const emailInput = document.querySelector("#emailInput");
         const passwordInput = document.querySelector("#passwordInput");
         const userNameInput = document.querySelector("#userNameInput");
         const userIdInput = document.querySelector("#userIdInput");
         const introInput = document.querySelector("#userIntroInput");
+
+        const imageInput = document.querySelector("#profileImg")
+        // 언제 파일 업로드가 이루어지나요?
+        // 내가 input에서 파일을 선택 했을때.
+        // 1. 파일 선택한거 확인했음
+        // 2. 파일확인해야지 ㅋㅋㅋㅋㅋㅋ
+        // 
+        const handleImageInput = async (e)=>{
+            const formData = new FormData();
+            const imageFile = e.target.files[0];
+            formData.append("image",imageFile);
+            const res = await fetch("https://api.mandarin.weniv.co.kr/image/uploadfile",{
+                method:"POST",
+                body:formData
+            });
+            const json = await res.json();
+            document.querySelector("#imagePre").src = "https://api.mandarin.weniv.co.kr/"+json.filename
+            
+        }
+        imageInput.addEventListener("change",handleImageInput);
     </script>
 </body>
 </html>
