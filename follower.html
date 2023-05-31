@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="getFollowList">팔로우받기</button>
+    <div>팔로워 정보가 들어올 공간
+        <div id="followList"></div>
+    </div>
+</body>
+<script>
+    const getFollowList = async ()=>{
+        const token = localStorage.getItem("token");
+        console.log(token)
+        const res = await fetch("https://api.mandarin.weniv.co.kr/profile/weniv_won/follower",{
+            method:"GET",
+            headers:{
+                "Authorization" : `Bearer ${token}`,
+                "Content-type" : "application/json"
+            }
+        });
+        const json = await res.json();
+        console.log(json);
+        renderFollowList(json)
+    }
+    const renderFollowList = (followList)=>{
+        document.querySelector("#followList").innerHTML = JSON.stringify(followList)
+    }
+    const getFollowListButton = document.querySelector("#getFollowList");
+    getFollowListButton.addEventListener("click",getFollowList);
+</script>
+</html>
