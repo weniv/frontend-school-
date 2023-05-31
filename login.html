@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main class="login-email">
+        <h1 class="main-title login-email-title">
+            로그인
+        </h1>
+        <section class="login-email-container">
+            <h2 class="ir">이메일, 비밀번호 입력 컨테이너</h2>
+            <form>
+                <div class="input-container">
+                    <label for="">이메일</label>
+                    <input type="email" id="email">
+                </div>
+                <div class="input-container input-container-pw">
+                    <label for="">비밀번호</label>
+                    <input type="password" id="pw">
+                </div>
+                <button id="login-btn" class="init-button l-button disabled-button login-btn" type="button">로그인</button>
+                <button class="join-email-btn" type="button">이메일로 회원가입</button>
+            </form>
+        </section>
+    </main>
+</body>
+<script>
+    async function login() {
+        const email = document.querySelector("#email").value
+        const password = document.querySelector("#pw").value
+
+        const url = "https://api.mandarin.weniv.co.kr";
+        const reqPath ="/user/login";
+        //비밀번호 6개이상인지 체크하기
+        if(password.length<6) {
+            alert("비밀번호 6개 이상어야함")
+            return ;
+        }
+        const loginData = {
+		"user":{
+				"email": email,
+				"password": password
+		    }
+        }
+        const reqUrl = url+reqPath
+        const res = await fetch(reqUrl,{
+            method:"POST",
+            headers:{
+                "Content-type" : "application/json"
+            },
+            body:JSON.stringify(loginData)
+        });
+
+        const json = await res.json()
+        console.log(json,"제이손입니다")
+        const token = json.user["token"]
+        //로컬스토리지 key:"token"에 token값 저장 
+        localStorage.setItem("token",token);
+    }
+    const loginButton = document.querySelector("#login-btn");
+    loginButton.addEventListener("click", login);
+</script>
+</html>
